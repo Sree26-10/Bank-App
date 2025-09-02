@@ -1,9 +1,9 @@
 package com.upskill.accounts.repository;
 
-import com.upskill.accounts.entity.Customer;
+import com.upskill.accounts.entity.Accounts;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Long> {
+public interface AccountsRepository extends JpaRepository<Accounts, Long> {
 }
