@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @ControllerAdvice //Using this we tell spring boot to handle exceptions globally
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(CustomerAlreadyExistsException.class)
+    @ExceptionHandler(CustomerAlreadyExistsException.class) //class name to be mentioned  so that it's important to mention for the annotation
     public ResponseEntity<ErrorResponseDto> handleException(CustomerAlreadyExistsException exception, WebRequest webRequest){
         ErrorResponseDto errorResponseDto=new ErrorResponseDto(
                 webRequest.getDescription(false),
@@ -23,6 +23,15 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 exception.getMessage(),
                 LocalDateTime.now());
         return new ResponseEntity<>(errorResponseDto,HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(CustomerAlreadyExistsException.class) //class name to be mentioned  so that it's important to mention for the annotation
+    public ResponseEntity<ErrorResponseDto> handleResourceNotFoundException(CustomerAlreadyExistsException exception, WebRequest webRequest){
+        ErrorResponseDto errorResponseDto=new ErrorResponseDto(
+                webRequest.getDescription(false),
+                HttpStatus.NOT_FOUND,
+                exception.getMessage(),
+                LocalDateTime.now());
+        return new ResponseEntity<>(errorResponseDto,HttpStatus.NOT_FOUND);
     }
 
 
