@@ -2,6 +2,7 @@ package com.upskill.accounts.mapper;
 
 import com.upskill.accounts.dto.AccountsDto;
 import com.upskill.accounts.entity.Accounts;
+import lombok.*;
 
 public class AccountsMapper {
 
